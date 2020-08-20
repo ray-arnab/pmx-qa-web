@@ -12,4 +12,7 @@ phases:
   build:
     commands:
       - npm run build
-  
+  post_build:
+    commands:
+      # should ideally be a separate deploy stage
+      - aws s3 sync ./build s3://pmx-qa-tool-web
